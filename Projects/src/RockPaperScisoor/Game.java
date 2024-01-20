@@ -31,7 +31,7 @@ public class Game {
             return input;
         }
         System.out.println("Wrong Input!");
-        return null;
+        return getPlayerSelection();
     }
 
     private void display(int computerWonTimes, int playerWonTimes, String computerSelection){
@@ -60,53 +60,65 @@ public class Game {
             System.out.println("Match drawn!");
             System.out.println("===========================================");
         }
+        askToPlayAgain();
+    }
+
+    private void askToPlayAgain(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Do you want to play again? [y/n]");
+        String input = in.nextLine().toLowerCase();
+        if (input.equals("y")){
+            totalGamesPlayed = 0;
+            playerWonTimes = 0;
+            computerWonTimes = 0;
+            gameSimulation();
+        }
+        else if (input.equals("n")){
+            System.out.println("Thank you for playing!");
+        }
+        else{
+            System.out.println("Wrong Input!");
+            askToPlayAgain();
+        }
     }
 
     public void gameSimulation(){
         while ( totalGamesPlayed < 5 ){
             playerSelection = getPlayerSelection().toLowerCase();
             computerSelection = getComputerSelection().toLowerCase();
-            if (playerSelection.isEmpty()){
-                display(computerWonTimes, playerWonTimes, computerSelection);
-                //playerSelection = getPlayerSelection();
-            }
-            else if (playerSelection.equals("rock")){
-                if (computerSelection.equals("paper")){
-                    computerWonTimes += 1;
-                    display(computerWonTimes, playerWonTimes, computerSelection);
+            switch (playerSelection) {
+                case "rock" -> {
+                    if (computerSelection.equals("paper")) {
+                        computerWonTimes += 1;
+                        display(computerWonTimes, playerWonTimes, computerSelection);
+                    } else if (computerSelection.equals("scissor")) {
+                        playerWonTimes += 1;
+                        display(computerWonTimes, playerWonTimes, computerSelection);
+                    } else {
+                        display(computerWonTimes, playerWonTimes, computerSelection);
+                    }
                 }
-                else if(computerSelection.equals("scissor")){
-                    playerWonTimes += 1;
-                    display(computerWonTimes, playerWonTimes, computerSelection);
+                case "paper" -> {
+                    if (computerSelection.equals("scissor")) {
+                        computerWonTimes += 1;
+                        display(computerWonTimes, playerWonTimes, computerSelection);
+                    } else if (computerSelection.equals("rock")) {
+                        playerWonTimes += 1;
+                        display(computerWonTimes, playerWonTimes, computerSelection);
+                    } else {
+                        display(computerWonTimes, playerWonTimes, computerSelection);
+                    }
                 }
-                else{
-                    display(computerWonTimes, playerWonTimes, computerSelection);
-                }
-            }
-            else if ( playerSelection.equals("paper")){
-                if ( computerSelection.equals("scissor")){
-                    computerWonTimes += 1;
-                    display(computerWonTimes, playerWonTimes, computerSelection);
-                }
-                else if(computerSelection.equals("rock")){
-                    playerWonTimes += 1;
-                    display(computerWonTimes, playerWonTimes, computerSelection);
-                }
-                else{
-                    display(computerWonTimes, playerWonTimes, computerSelection);
-                }
-            }
-            else if ( playerSelection.equals("scissor")){
-                if (computerSelection.equals("paper")){
-                    playerWonTimes += 1;
-                    display(computerWonTimes, playerWonTimes, computerSelection);
-                }
-                else if(computerSelection.equals("rock")) {
-                    computerWonTimes += 1;
-                    display(computerWonTimes, playerWonTimes, computerSelection);
-                }
-                else {
-                    display(computerWonTimes, playerWonTimes, computerSelection);
+                case "scissor" -> {
+                    if (computerSelection.equals("paper")) {
+                        playerWonTimes += 1;
+                        display(computerWonTimes, playerWonTimes, computerSelection);
+                    } else if (computerSelection.equals("rock")) {
+                        computerWonTimes += 1;
+                        display(computerWonTimes, playerWonTimes, computerSelection);
+                    } else {
+                        display(computerWonTimes, playerWonTimes, computerSelection);
+                    }
                 }
             }
             totalGamesPlayed ++;
