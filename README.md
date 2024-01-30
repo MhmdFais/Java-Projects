@@ -1,6 +1,7 @@
 # Java-Projects
 
-This repository contains all the projects I have done in Java.
+This repository contains the projects I have done in Java. 
+Note - This repository is not a complete list of all the projects I have done in Java.
 
 ## Projects
 
@@ -11,3 +12,13 @@ The user can choose to play again or quit the game.
 ### Number-Guessing-Game
 This is a simple game of Number Guessing. The user has to guess a number between 1 and 100. User get three chances to 
 guess the number. The computer will tell the user if the number is too high or too low.
+
+### Stack implementation (interface)
+This is a simple implementation of a stack using an interface. The stack is implemented using an array. 
+The stack has the following methods:
+* `push()` - adds an element to the stack
+* `pop()` - removes an element from the stack
+* `top()` - returns the top element of the stack
+* `topAndPop()` - remove and return top element of the stack
+* `isEmpty()` - check whether the stack is empty
+* `printStack()` - prints the whole stack
