@@ -22,3 +22,8 @@ The stack has the following methods:
 * `topAndPop()` - remove and return top element of the stack
 * `isEmpty()` - check whether the stack is empty
 * `printStack()` - prints the whole stack
+
+### Employee Management System
+This is a menu-driven program that allows the user to add, delete, search, print and print a given employee. There are
+three types of employees - Full Time, Contractor and Manager. The program uses inheritance and polymorphism to implement
+the different types of employees. 
