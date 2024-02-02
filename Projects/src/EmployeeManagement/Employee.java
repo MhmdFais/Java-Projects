@@ -9,16 +9,23 @@ public class Employee {
 
     public Employee(){}
 
-    public Employee(Name name, int NICNumber, DateOfBirth DOB){
+    public Employee(Name name, DateOfBirth DOB){
         this.name = name;
-        this.NICNumber = NICNumber;
+        //this.NICNumber = NICNumber;
         this.DOB = DOB;
     }
 
     public void getNICNumberFromUser(){
         Scanner in = new Scanner(System.in);
         System.out.print("Enter NIC number: ");
-        NICNumber = in.nextInt();
+        int nic = in.nextInt();
+        if(String.valueOf(nic).length() >= 8){
+            NICNumber = nic;
+        }
+        else{
+            System.out.println("NIC number is short(should be at least 8 characters long)");
+            getNICNumberFromUser();
+        }
     }
 
     public String toString(){

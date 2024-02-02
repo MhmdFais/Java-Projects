@@ -26,4 +26,4 @@ The stack has the following methods:
 ### Employee Management System
 This is a menu-driven program that allows the user to add, delete, search, print and print a given employee. There are
 three types of employees - Full Time, Contractor and Manager. The program uses inheritance and polymorphism to implement
-the different types of employees. 
+the different types of employees. The program uses an array list of objects to store the employees.
