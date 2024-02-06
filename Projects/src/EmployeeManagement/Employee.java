@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class Employee {
     private Name name;
-    private int NICNumber;
+    private String NICNumber;
     private DateOfBirth DOB;
 
     //public Employee(){}
 
-    public Employee(Name name, DateOfBirth DOB, int NICNumber){
+    public Employee(Name name, DateOfBirth DOB, String NICNumber){
         this.name = name;
         this.NICNumber = NICNumber;
         this.DOB = DOB;

@@ -8,7 +8,7 @@ public class PermenantEmployee extends Employee{
 
     //public PermenantEmployee(){}
 
-    public PermenantEmployee(Name name, DateOfBirth DOB, int NICNumber){
+    public PermenantEmployee(Name name, DateOfBirth DOB, String NICNumber){
         super(name, DOB, NICNumber);
         this.salary = 0;
         this.annualBonus = 0;

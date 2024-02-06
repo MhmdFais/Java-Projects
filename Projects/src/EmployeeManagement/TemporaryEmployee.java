@@ -1,6 +1,5 @@
 package EmployeeManagement;
 
-import java.security.PublicKey;
 import java.util.Scanner;
 
 public class TemporaryEmployee extends Employee{
@@ -10,7 +9,7 @@ public class TemporaryEmployee extends Employee{
     //public TemporaryEmployee(){}
 
 
-    public TemporaryEmployee(Name name, DateOfBirth DOB, int NICNumber){
+    public TemporaryEmployee(Name name, DateOfBirth DOB, String NICNumber){
         super(name, DOB, NICNumber);
         this.contractPeriod = 0;
         this.hourlyRate = 0;
