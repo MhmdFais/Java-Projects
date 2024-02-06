@@ -39,7 +39,7 @@ public class MyApp {
                 case 3:
                     printAllEmployees();
                     break;
-                case 0:
+                case 4:
                     System.out.println("Exiting...");
                     break;
                 default:
@@ -53,12 +53,13 @@ public class MyApp {
         name.getNameFromUser();
         DateOfBirth DOB = new DateOfBirth();
         DOB.getDateOfBirthFromUser();
-        getNic();
-        PermenantEmployee perEmp = new PermenantEmployee(name, DOB);
+        int nic = getNic();
+        PermenantEmployee perEmp = new PermenantEmployee(name, DOB, nic);
         perEmp.getSalaryFromUser();
-        System.out.println(perEmp);
-//        StoreEmployee store = new StoreEmployee();
-//        store.addEmployee(perEmp);
+//        System.out.println();
+//        System.out.println(perEmp);
+        StoreEmployee store = new StoreEmployee();
+        store.addEmployee(perEmp);
     }
 
     public static void addTemporaryEmployee(){
@@ -66,22 +67,32 @@ public class MyApp {
         name.getNameFromUser();
         DateOfBirth DOB = new DateOfBirth();
         DOB.getDateOfBirthFromUser();
-        getNic();
-        TemporaryEmployee tempEmp = new TemporaryEmployee(name,  DOB);
+        int nic = getNic();
+        TemporaryEmployee tempEmp = new TemporaryEmployee(name, DOB, nic);
         tempEmp.getContractPeriodFromUser();
-        System.out.println(tempEmp);
-//        StoreEmployee store = new StoreEmployee();
-//        store.addEmployee(tempEmp);
+//        System.out.println();
+//        System.out.println(tempEmp);
+        StoreEmployee store = new StoreEmployee();
+        store.addEmployee(tempEmp);
     }
 
     public static void printAllEmployees(){
         StoreEmployee store = new StoreEmployee();
+        System.out.println("All Employees");
         store.printAllEmployees();
     }
 
-    public static void getNic(){
-        Employee emp = new Employee();
-        emp.getNICNumberFromUser();
+    public static int getNic(){
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter NIC number: ");
+        int nic = in.nextInt();
+        if(String.valueOf(nic).length() >= 8){
+            return nic;
+        }
+        else{
+            System.out.println("NIC number is short(should be at least 8 characters long)");
+        }
+        return getNic();
     }
 
 }

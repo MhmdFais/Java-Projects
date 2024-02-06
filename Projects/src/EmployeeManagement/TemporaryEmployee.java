@@ -1,14 +1,17 @@
 package EmployeeManagement;
 
+import java.security.PublicKey;
 import java.util.Scanner;
 
 public class TemporaryEmployee extends Employee{
     private int contractPeriod;
     private int hourlyRate;
 
+    //public TemporaryEmployee(){}
 
-    public TemporaryEmployee(Name name, DateOfBirth DOB){
-        super(name, DOB);
+
+    public TemporaryEmployee(Name name, DateOfBirth DOB, int NICNumber){
+        super(name, DOB, NICNumber);
         this.contractPeriod = 0;
         this.hourlyRate = 0;
     }

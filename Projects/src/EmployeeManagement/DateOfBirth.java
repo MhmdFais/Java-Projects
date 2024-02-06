@@ -22,9 +22,8 @@ public class DateOfBirth {
         }
         else {
             wrongInputMessage();
-            getDayFromUser();
         }
-        return 0;
+        return getDayFromUser();
     }
 
     private int getMonthFromUser(){
@@ -36,9 +35,8 @@ public class DateOfBirth {
         }
         else{
             wrongInputMessage();
-            getMonthFromUser();
         }
-        return 0;
+        return getMonthFromUser();
     }
 
     private int getYearFromUser(){
@@ -47,8 +45,7 @@ public class DateOfBirth {
         int inp = in.nextInt();
         if ( inp < 0 ){
             wrongInputMessage();
-            getYearFromUser();
-            return 0;
+            return getYearFromUser();
         }
         return inp;
     }

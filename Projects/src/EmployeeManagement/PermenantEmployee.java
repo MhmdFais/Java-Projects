@@ -6,8 +6,10 @@ public class PermenantEmployee extends Employee{
     private int salary;
     private int annualBonus;
 
-    public PermenantEmployee(Name name, DateOfBirth DOB){
-        super(name, DOB);
+    //public PermenantEmployee(){}
+
+    public PermenantEmployee(Name name, DateOfBirth DOB, int NICNumber){
+        super(name, DOB, NICNumber);
         this.salary = 0;
         this.annualBonus = 0;
     }
