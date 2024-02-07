@@ -1,5 +1,7 @@
 package StudentManagement;
 
+import java.util.Scanner;
+
 public class Name {
     private String firstName;
     private String lastName;
@@ -10,13 +12,15 @@ public class Name {
     }
 
     private String getFirstNameFromUser(){
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the student's first name: ");
-        return System.console().readLine();
+        return scanner.nextLine();
     }
 
     private String getLastNameFromUser(){
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the student's last name: ");
-        return System.console().readLine();
+        return scanner.nextLine();
     }
 
     public String toString(){
