@@ -4,9 +4,9 @@ public class Student {
     private final Name name;
     private final DateOfBirth dateOfBirth;
 
-    private final StudentID stuID;
+    private final int stuID;
 
-    public Student(Name name, DateOfBirth dateOfBirth, StudentID stuID) {
+    public Student(Name name, DateOfBirth dateOfBirth, int stuID) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.stuID = stuID;
@@ -20,7 +20,12 @@ public class Student {
         return dateOfBirth;
     }
 
-    public StudentID getStuID(){
+    public int getStuID(){
         return stuID;
     }
+
+    public String toString() {
+        return "Name: " + name + "\nDate of Birth: " + dateOfBirth + "\nStudent ID: " + stuID;
+    }
+
 }

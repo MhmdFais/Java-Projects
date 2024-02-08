@@ -6,27 +6,39 @@ import java.util.Scanner;
 public class StudentID {
     ArrayList<Integer> stuID = new ArrayList<Integer>();
 
-    public StudentID(){
-        getStuIDFromUser();
-    }
+    private int sid;
 
-    private void getStuIDFromUser(){
+
+    public int getStuIDFromUser(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the student's ID: ");
         int id = scanner.nextInt();
-        //check if the input is an integer and if it is not already in the list
-        if(!scanner.hasNextInt()){
-            System.out.println("Invalid input, Please enter a number.");
-            getStuIDFromUser();
-        } else if(stuID.contains(id)){
-            System.out.println("This ID is already in use, Please enter a different ID.");
-            getStuIDFromUser();
+        if(stuID.contains(id)){
+            System.out.println("This ID is already taken. Please enter another ID.");
+            return  getStuIDFromUser();
         } else {
-            stuID.add(id);
+            if (id < 0 || id == 0) {
+                System.out.println("Invalid ID. Please enter a positive number.");
+                return getStuIDFromUser();
+            }
+            else{
+                sid = id;
+                stuID.add(sid);
+                return sid;
+            }
         }
     }
 
+//    public void printIDs(){
+//        for(int id : stuID){
+//            System.out.println(id);
+//        }
+//    }
+
     public String toString(){
-        return "ID: " + stuID.get(0);
+        return "Student ID: " + sid ;
+
     }
+
 }
+

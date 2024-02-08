@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class App {
     static StoreStudent storeStudent = new StoreStudent();
+    static StudentID stuID = new StudentID();
     public static void main(String[] args) {
         menu();
     }
@@ -51,15 +52,16 @@ public class App {
 
     public static void addStudent(){
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter the student's information...");
+        System.out.println("Enter the student's information");
         Name name = new Name();
         DateOfBirth dateOfBirth = new DateOfBirth();
-        StudentID stuID = new StudentID();
-        Student student = new Student(name, dateOfBirth, stuID);
+        int ID = stuID.getStuIDFromUser();
+        Student student = new Student(name, dateOfBirth, ID);
         storeStudent.addStudent(student);
         System.out.println("Adding the student...");
         System.out.println("Student added successfully");
         System.out.println();
+        //System.out.println(student);
     }
 
     public static void removeStudent(){
@@ -67,14 +69,12 @@ public class App {
         System.out.print("Enter the index of the student you want to remove: ");
         int index = in.nextInt();
         storeStudent.removeStudent(index);
-        System.out.println("Removing the student...");
-        System.out.println("Student removed successfully");
         System.out.println();
     }
 
     public static void updateStudent(){
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter the index of the student you want to update: ");
+        System.out.print("Enter the id of the student you want to update: ");
         int index = in.nextInt();
         if ( !storeStudent.isStudent(index) ){
             System.out.println("No student with the given index");
@@ -84,8 +84,8 @@ public class App {
             System.out.println("Enter the student's updated information");
             Name name = new Name();
             DateOfBirth dateOfBirth = new DateOfBirth();
-            StudentID stuID = new StudentID();
-            Student student = new Student(name, dateOfBirth, stuID);
+            int ID = stuID.getStuIDFromUser();
+            Student student = new Student(name, dateOfBirth, ID);
             storeStudent.updateStudent(index, student);
             System.out.println("Updating the student...");
             System.out.println("Student updated successfully");
@@ -105,18 +105,21 @@ public class App {
                 printStudent();
             }
             else {
-                System.out.println("Exiting...");
+                System.out.println();
             }
         }
         else {
             System.out.println("Printing the student...");
+            System.out.println("---------------------------------");
             System.out.println(storeStudent.getStudent(index));
+            System.out.println("---------------------------------");
             System.out.println();
         }
     }
 
     public static void printAllStudents(){
         System.out.println("Printing all the students...");
+        System.out.println("---------------------------------");
         storeStudent.printStudents();
         System.out.println();
     }

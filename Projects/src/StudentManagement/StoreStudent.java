@@ -16,21 +16,55 @@ public class StoreStudent {
         }
     }
 
-    public void removeStudent(int index){
-        students.remove(index);
+    public void removeStudent(int studentID){
+        // Iterate through the list of students
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            // Check if the student's ID matches the provided studentID
+            if (student.getStuID() == studentID) {
+                // Remove the student from the list
+                students.remove(i);
+                System.out.println("Removing the student with ID " + studentID);
+                System.out.println("Student removed successfully");
+                return; // Exit the method after removing the student
+            }
+        }
+        // If no student with the provided ID is found
+        System.out.println("No student found with ID " + studentID);
     }
 
-    public void updateStudent(int index, Student student){
-        students.set(index, student);
+    public void updateStudent(int studentID, Student updatedStudent){
+        // Iterate through the list of students
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            // Check if the student's ID matches the provided studentID
+            if (student.getStuID() == studentID) {
+                // Update the student information
+                students.set(i, updatedStudent);
+                System.out.println("Updating the student with ID " + studentID);
+                System.out.println("Student updated successfully");
+                return; // Exit the method after updating the student
+            }
+        }
+        // If no student with the provided ID is found
+        System.out.println("No student found with ID " + studentID);
     }
 
-
-
-    public boolean isStudent(int index){
-        return students.contains(students.get(index));
+    public boolean isStudent(int studentID){
+        for (Student student : students) {
+            if (student.getStuID() == studentID) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public Student getStudent(int index){
-        return students.get(index);
+    public Student getStudent(int studentID){
+        for (Student student : students) {
+            if (student.getStuID() == studentID) {
+                return student;
+            }
+        }
+        return null;
     }
 }
