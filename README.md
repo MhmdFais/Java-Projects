@@ -31,3 +31,15 @@ the different types of employees. The program uses an array list of objects to s
 ### Student Management System
 This is a menu-driven program that allows the user to add, delete, search, print and print a given student. The program uses
 an array list of objects to store the students.
+
+### Bus ticket booking system
+A Bus consist f 50 seats, one passenger can book any no.of seats, however it depends on the availability. Seats are 
+reserved on a first-come, first-served basis. The passengers are only allowed to board to bus from COLOMBO, JAFFNA,
+ANURATHAPURA and VAVUNIYA. The passengers who board to bus from ANURATHAPURA and VAVUNIYA have to pay 25% extra of the
+ticket price. However, there are no additional charges for the children. Below are the details of the bus ticket booking system.
+
+COLOMBO - JAFFNA : 1000.00   // No additional charges
+ANURATHAPURA - JAFFNA : 700.00  // additional charges 25%
+VAVUNIYA - JAFFNA : 400.00  // additional charges 25%
+ANURATHAPURA - COLOMBO : 400.00 // additional charges 25%
+VAVUNIYA - COLOMBO : 700.00 // additional charges 25%
