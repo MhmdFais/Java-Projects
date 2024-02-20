@@ -1,9 +1,9 @@
 package TicketBookingSystem;
 
+import java.util.ArrayList;
+
 public class Bus {
-    private String number;
     private String date;
-    private String time;
     private int from;
     private int to;
     private final int totalSeats = 50;
@@ -20,10 +20,8 @@ public class Bus {
 
     public Bus(){}
 
-    public Bus(String number, String date, String time, int from, int to, int availableSeats) {
-        this.number = number;
+    public Bus(String date, int from, int to, int availableSeats) {
         this.date = date;
-        this.time = time;
         this.from = from;
         this.to = to;
         this.availableSeats = availableSeats;
@@ -45,39 +43,50 @@ public class Bus {
         availableSeats++;
     }
 
+    private boolean isSeatAvailableOnDate(String date){
+        return this.date.equals(date);
+    }
+
     private double calculateFare(int from, int to) {
         return  fairTable[from][to];
     }
 
-    public void bookSeatAdult(int from, int to, int numPassengers) {
-        if (isSeatAvailable()) {
-            if (numPassengers <= availableSeats) {
-                double totalFare = calculateFare(from, to) * numPassengers;
-                if (from == 3 || from == 4) { // Anuradhapura or Vavuniya
-                    totalFare = totalFare * 0.25;
+    public void bookSeatAdult(int from, int to, int numPassengers, String date) {
+        if ( isSeatAvailableOnDate(date) ){
+            if (isSeatAvailable()) {
+                if (numPassengers <= availableSeats) {
+                    double totalFare = calculateFare(from, to) * numPassengers * 0.5;
+                    if (from == 3 || from == 4) { // Anuradhapura or Vavuniya
+                        totalFare *= 0.25;
+                    }
+                    System.out.println("Total Fare: " + totalFare);
+                    bookSeat();
+                } else {
+                    System.out.println("Not enough seats available");
                 }
-                System.out.println("Total Fare: " + totalFare);
-                bookSeat();
             } else {
-                System.out.println("Not enough seats available");
+                System.out.println("No seats available");
             }
         } else {
-            System.out.println("No seats available");
+            System.out.println("No seats available on this date");
         }
     }
 
-    public void bookSeatChild(int from, int to, int numPassengers) {
-        if (isSeatAvailable()) {
-            if (numPassengers <= availableSeats) {
-                double totalFare = calculateFare(from, to) * numPassengers;
-                totalFare = totalFare * 0.5;
-                System.out.println("Total Fare: " + totalFare);
-                bookSeat();
+    public void bookSeatChild(int from, int to, int numPassengers, String date) {
+        if ( isSeatAvailableOnDate(date) ){
+            if (isSeatAvailable()) {
+                if (numPassengers <= availableSeats) {
+                    double totalFare = (calculateFare(from, to) * numPassengers) * 0.5;
+                    System.out.println("Total Fare: " + totalFare);
+                    bookSeat();
+                } else {
+                    System.out.println("Not enough seats available");
+                }
             } else {
-                System.out.println("Not enough seats available");
+                System.out.println("No seats available");
             }
         } else {
-            System.out.println("No seats available");
+            System.out.println("No seats available on this date");
         }
     }
 }
