@@ -43,3 +43,7 @@ ANURATHAPURA - JAFFNA : 700.00  // additional charges 25%
 VAVUNIYA - JAFFNA : 400.00  // additional charges 25%
 ANURATHAPURA - COLOMBO : 400.00 // additional charges 25%
 VAVUNIYA - COLOMBO : 700.00 // additional charges 25%
+
+### ATM Machine
+This is a simple ATM machine program. The user can deposit, withdraw, check balance and change pin. The program uses a
+switch case to implement the menu. 
