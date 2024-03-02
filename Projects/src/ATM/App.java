@@ -20,47 +20,48 @@ public class App {
         System.out.println("Enter your initial balance: ");
         this.balance = in.nextDouble();
         saveAccountDetails(accountNumber, pin, balance);
-        in.close();
     }
 
-    private void getActionWantToPerform(){
+    private void getActionWantToPerform() {
         Scanner in = new Scanner(System.in);
         AccountDetails account = new AccountDetails(this.accountNumber, this.pin, this.balance);
-        System.out.println("Enter the action you want to perform: ");
-        System.out.println("1. Deposit");
-        System.out.println("2. Withdraw");
-        System.out.println("3. Check balance");
-        System.out.println("4. Change PIN");
-        System.out.println("5. Exit");
-        int action = in.nextInt();
-        switch (action) {
-            case 1:
-                System.out.println("Enter the amount you want to deposit: ");
-                double depositAmount = in.nextDouble();
-                account.deposit(depositAmount);
-                break;
-            case 2:
-                System.out.println("Enter the amount you want to withdraw: ");
-                double withdrawAmount = in.nextDouble();
-                account.withdraw(withdrawAmount);
-                break;
-            case 3:
-                account.checkBalance();
-                break;
-            case 4:
-                System.out.println("Enter your old PIN: ");
-                String oldPin = in.next();
-                System.out.println("Enter your new PIN: ");
-                String newPin = in.next();
-                account.changePin(oldPin, newPin);
-                break;
-            case 5:
-                System.out.println("Exiting...");
-                break;
-            default:
-                System.out.println("Invalid action.");
-        }
-        in.close();
+        int action;
+        do {
+            System.out.println("Enter the action you want to perform: ");
+            System.out.println("1. Deposit");
+            System.out.println("2. Withdraw");
+            System.out.println("3. Check balance");
+            System.out.println("4. Change PIN");
+            System.out.println("5. Exit");
+            action = in.nextInt();
+            switch (action) {
+                case 1:
+                    System.out.println("Enter the amount you want to deposit: ");
+                    double depositAmount = in.nextDouble();
+                    account.deposit(depositAmount);
+                    break;
+                case 2:
+                    System.out.println("Enter the amount you want to withdraw: ");
+                    double withdrawAmount = in.nextDouble();
+                    account.withdraw(withdrawAmount);
+                    break;
+                case 3:
+                    account.checkBalance();
+                    break;
+                case 4:
+                    System.out.println("Enter your old PIN: ");
+                    String oldPin = in.next();
+                    System.out.println("Enter your new PIN: ");
+                    String newPin = in.next();
+                    account.changePin(oldPin, newPin);
+                    break;
+                case 5:
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid action.");
+            }
+        } while (action != 5);
     }
 
     private void saveAccountDetails(String accountNumber, String pin, double balance){
