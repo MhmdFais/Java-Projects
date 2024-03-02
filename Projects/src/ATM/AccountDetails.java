@@ -1,57 +1,53 @@
 package ATM;
 
-public class AccountDetails {
-    private String accountNumber;
-    private String accountHolderName;
-    private String accountType;
-    private double balance;
+import java.util.ArrayList;
+
+class AccountDetails {
     private String pin;
+    private double balance;
+    private ArrayList<AccountDetails> accountDetails = new ArrayList<AccountDetails>();
 
-    public AccountDetails(String accountNumber, String accountHolderName, String accountType, double balance, String pin) {
-        this.accountNumber = accountNumber;
-        this.accountHolderName = accountHolderName;
-        this.accountType = accountType;
-        this.balance = balance;
+    public AccountDetails(String accountNumber, String pin, double balance) {
         this.pin = pin;
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public String getAccountHolderName() {
-        return accountHolderName;
-    }
-
-    public String getAccountType() {
-        return accountType;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public String getPin() {
-        return pin;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public void setAccountHolderName(String accountHolderName) {
-        this.accountHolderName = accountHolderName;
-    }
-
-    public void setAccountType(String accountType) {
-        this.accountType = accountType;
-    }
-
-    public void setBalance(double balance) {
         this.balance = balance;
     }
 
-    public void setPin(String pin) {
-        this.pin = pin;
+    public void deposit(double amount) {
+        if (amount > 0) {
+            this.balance += amount;
+            System.out.printf("Successfully deposited %.2f\n", amount);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    public boolean withdraw(double amount) {
+        if (0 < amount && amount <= this.balance) {
+            this.balance -= amount;
+            System.out.printf("Successfully withdrawn %.2f\n", amount);
+            return true;
+        } else {
+            System.out.println("Insufficient funds or invalid withdrawal amount.");
+            return false;
+        }
+    }
+
+    public void checkBalance() {
+        System.out.printf("Your current balance is %.2f\n", this.balance);
+    }
+
+    public boolean changePin(String oldPin, String newPin) {
+        if (oldPin.equals(this.pin)) {
+            this.pin = newPin;
+            System.out.println("PIN successfully changed.");
+            return true;
+        } else {
+            System.out.println("Incorrect old PIN.");
+            return false;
+        }
+    }
+
+    public void addAccountDetails(AccountDetails account) {
+        accountDetails.add(account);
     }
 }
